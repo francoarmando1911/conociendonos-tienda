@@ -1,20 +1,14 @@
-interface ProductNinos {
-    id: number;
-    image: string;
-    hoverImage: string; 
-    title: string;
-    price: number;
-}
+import { Product } from '../types/types'; 
 
-const ninos: ProductNinos [] = [
+const ninos: Product[] = [
     {
         id: 1,
-        image: "#",
-        hoverImage: "#",
-        title: "Body",
-        price: 19.794
+        image: "remeNene1.jpg", 
+        hoverImage: "remeNene2.jpg", 
+        title: "Remera Milan",
+        price: 23.093
     },
-
 ];
+
 
 export default ninos;

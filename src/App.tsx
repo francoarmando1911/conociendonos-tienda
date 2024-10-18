@@ -4,7 +4,6 @@ import Home from './components/Home';
 import Slider from './components/Slider';
 import SlickSlider from './components/SlickSlider';
 import Footer from './components/Footer';
-
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Ninos from './pages/Ninos';
@@ -30,6 +29,21 @@ function App() {
         isMenuOpen={isMenuOpen}
         toggleMenu={toggleMenu}
       />
+
+      {/* Menú de categorías */}
+      {isMenuOpen && (
+        <nav className="bg-white shadow-lg p-4">
+          <ul>
+            <li>
+              <a href="/pages/Ninos" className="block py-2 text-gray-800 hover:text-blue-500">Niños</a>
+            </li>
+            <li>
+              <a href="/pages/Ninas" className="block py-2 text-gray-800 hover:text-blue-500">Niñas</a>
+            </li>
+            {/* Agrega más categorías aquí si es necesario */}
+          </ul>
+        </nav>
+      )}
 
       <main className="flex-grow p-4">
         <Routes>

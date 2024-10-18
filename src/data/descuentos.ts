@@ -1,11 +1,4 @@
-
-interface Product {
-    id: number;
-    image: string;
-    hoverImage: string; // Nueva propiedad
-    title: string;
-    price: number;
-}
+import { Product } from '../types/types'; // Asegúrate de ajustar la ruta según tu estructura
 
 const discountedProducts: Product[] = [
     {

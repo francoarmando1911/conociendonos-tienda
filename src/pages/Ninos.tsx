@@ -4,8 +4,8 @@ import ProductBox from "../components/ProductBox";
 
 const Ninos: React.FC = () => {
 
-    const handleProductClick = (ProductNinosId: number) => {
-        window.location.href = `/comprar/${ProductNinosId}`
+    const handleProductClick = (ProductId: number) => {
+        window.location.href = `/comprar/${ProductId}`
     }
 
     return (
@@ -14,14 +14,14 @@ const Ninos: React.FC = () => {
             <p className="mb-4 text-center">Explora nuestra selección de productos especialmente diseñados para los más pequeños.</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-3">
-                {ninos.map((ProductNinos) => (
+                {ninos.map((Product) => (
                     <ProductBox
-                        key={ProductNinos.id}
-                        image={ProductNinos.image}
-                        hoverImage={ProductNinos.hoverImage}
-                        title={ProductNinos.title}
-                        price={ProductNinos.price}
-                        onClick={() => handleProductClick(ProductNinos.id)}
+                        key={Product.id}
+                        image={Product.image}
+                        hoverImage={Product.hoverImage}
+                        title={Product.title}
+                        price={Product.price}
+                        onClick={() => handleProductClick(Product.id)}
                     />
                 ))}
             </div>

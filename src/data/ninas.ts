@@ -1,12 +1,6 @@
-interface ProductNinas {
-    id: number;
-    image: string;
-    hoverImage: string;
-    title: string;
-    price: number;
-}
+import { Product } from '../types/types'; // Importa la interfaz
 
-const ninas: ProductNinas[] = [
+const ninas: Product[] = [
     {
         id: 1,
         image: "#",
@@ -14,7 +8,6 @@ const ninas: ProductNinas[] = [
         title: "Body",
         price: 19.794
     },
-
 ];
 
 export default ninas;
