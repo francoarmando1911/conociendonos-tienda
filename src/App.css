@@ -1,0 +1,28 @@
+.slider-height {
+    height: 28rem;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+@media (max-width: 640px) {
+    .slider-height {
+        height: 40rem;
+        border-radius: 1rem;
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.font-nunito {
+    font-family: 'Nunito', sans-serif;
+}
+
+.varela-round-regular {
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
