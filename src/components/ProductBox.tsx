@@ -18,25 +18,28 @@ const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price
 
     return (
         <div
-            className="border rounded-xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer h-72" // Ajuste de altura
+            className="border rounded-xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer min-h-72" 
             onClick={onClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+            role="button" // Mejora de accesibilidad
+            tabIndex={0} // Mejora de accesibilidad
+            onKeyDown={(e) => e.key === "Enter" && onClick()} // Navegación por teclado
         >
             <img
                 src={currentImage}
                 alt={title}
-                className="w-full h-48 object-cover " // Aumenta la altura de la imagen
+                className="w-full h-48 object-cover" // Aumenta la altura de la imagen
             />
             <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-                <p className="text-blue-500 font-bold mt-1">${price}</p>
+                <p className="text-blue-500 font-bold mt-1">${price.toFixed(2)}</p>
             </div>
-            
         </div>
     );
 };
 
 export default ProductBox;
+

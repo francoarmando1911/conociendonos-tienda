@@ -40,12 +40,11 @@ function App() {
             <li>
               <a href="/pages/Ninas" className="block py-2 text-gray-800 hover:text-blue-500">Niñas</a>
             </li>
-            {/* Agrega más categorías aquí si es necesario */}
           </ul>
         </nav>
       )}
 
-      <main className="flex-grow p-4">
+      <main className="flex-grow p-4 mt-[210px]">
         <Routes>
           <Route path="/" element={<><Slider /><SlickSlider /><Home /></>} />
           <Route path="/pages/Ninos" element={<Ninos />} />

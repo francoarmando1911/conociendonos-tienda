@@ -21,19 +21,19 @@ const Slider: React.FC = () => {
     };
 
     useEffect(() => {
-        let intervalId: number | undefined; // Cambiado a number
+        let intervalId: number | undefined;
         if (!isHovered) {
-            intervalId = window.setInterval(nextSlide, 4000); // Usar window.setInterval para evitar ambigüedad
+            intervalId = window.setInterval(nextSlide, 4000);
         }
         return () => {
             if (intervalId) {
-                window.clearInterval(intervalId); // Usar window.clearInterval para evitar ambigüedad
+                window.clearInterval(intervalId);
             }
         };
     }, [isHovered, nextSlide]);
 
     return (
-        <div className="relative w-full slider-height">
+        <div className="relative w-full slider-height z-10 "> {/* Asegúrate de que el slider tenga z-index bajo */}
             <div
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -52,10 +52,19 @@ const Slider: React.FC = () => {
                 ))}
             </div>
 
-            <button onClick={prevSlide}>
+            {/* Botón de anterior */}
+            <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 text-black p-2 rounded-full hover:bg-opacity-100 transition z-20" // Añadido z-index aquí
+            >
                 <FaChevronLeft />
             </button>
-            <button onClick={nextSlide}>
+
+            {/* Botón de siguiente */}
+            <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 text-black p-2 rounded-full hover:bg-opacity-100 transition z-20" // Añadido z-index aquí
+            >
                 <FaChevronRight />
             </button>
         </div>
