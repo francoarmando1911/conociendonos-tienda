@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
 
     const menuDropdownRef = useRef<HTMLDivElement>(null);
     const accountDropdownRef = useRef<HTMLDivElement>(null);
-    const searchDropdownRef = useRef<HTMLDivElement>(null); // Nueva referencia para la barra de búsqueda
+    const searchDropdownRef = useRef<HTMLDivElement>(null); 
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;

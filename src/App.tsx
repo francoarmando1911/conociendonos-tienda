@@ -11,14 +11,10 @@ import Ninas from './pages/Ninas';
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen] = useState(false);
 
   const addToCart = () => {
     setCartItems(cartItems + 1);
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -26,8 +22,6 @@ function App() {
       <Header
         cartItems={cartItems}
         addToCart={addToCart}
-        isMenuOpen={isMenuOpen}
-        toggleMenu={toggleMenu}
       />
 
       {/* Menú de categorías */}
