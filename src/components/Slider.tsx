@@ -3,9 +3,9 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import '../App.css';
 
 const slides = [
-    { id: 1, imageDesktop: "/slider1.png", imageMobile: "/slider1mob.png" },
-    { id: 2, imageDesktop: "/slider2.png", imageMobile: "/slider2mob.png" },
-    { id: 3, imageDesktop: "/slider3.png", imageMobile: "/slider3mob.png" },
+    { id: 1, imageDesktop: "/sliders/slider1.png", imageMobile: "/sliders/slider1mob.png" },
+    { id: 2, imageDesktop: "/sliders/slider2.png", imageMobile: "/sliders/slider2mob.png" },
+    { id: 3, imageDesktop: "/sliders/slider3.png", imageMobile: "/sliders/slider3mob.png" },
 ];
 
 const Slider: React.FC = () => {

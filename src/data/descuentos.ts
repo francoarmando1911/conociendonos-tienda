@@ -3,45 +3,45 @@ import { Product } from '../types/types'; // Asegúrate de ajustar la ruta segú
 const discountedProducts: Product[] = [
     {
         id: 1,
-        image: "/img1.png",
-        hoverImage: "/img2.png",
+        image: "/prodBebes/img1.png",
+        hoverImage: "/prodBebes/img2.png",
         title: "Body",
-        price: 19.794
+        price: 0
     },
     {
         id: 2,
-        image: "/short1.png",
-        hoverImage: "/short2.png",
+        image: "/prodNenes/short1.png",
+        hoverImage: "/prodNenes/short2.png",
         title: "Short",
-        price: 37.149
+        price: 0
     },
     {
         id: 3,
-        image: "/calza1.png",
-        hoverImage: "/calza2.png",
+        image: "/prodNenas/calza1.png",
+        hoverImage: "/prodNenas/calza2.png",
         title: "Calza",
-        price: 13.194
+        price: 0
     },
     {
         id: 4,
-        image: "/celeste1.jpg",
-        hoverImage: "/celeste2.jpg",
+        image: "/prodNenas/celeste1.jpg",
+        hoverImage: "/prodNenas/celeste2.jpg",
         title: "Saquito peter",
-        price: 29.793
+        price: 0
     },
     {
         id: 5,
-        image: "/ken1.jpg",
-        hoverImage: "/ken2.jpg",
+        image: "/prodNenes/ken1.jpg",
+        hoverImage: "/prodNenes/ken2.jpg",
         title: "Buzo ken",
-        price: 10.381
+        price: 0
     },
     {
         id: 6,
-        image: "/shortV1.jpg",
-        hoverImage: "/shortV2.jpg",
+        image: "/prodNenes/shortV1.jpg",
+        hoverImage: "/prodNenes/shortV2.jpg",
         title: "Short jungle",
-        price: 32.893
+        price: 0
     }
 ];
 

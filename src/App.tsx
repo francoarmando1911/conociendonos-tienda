@@ -38,7 +38,7 @@ function App() {
         </nav>
       )}
 
-      <main className="flex-grow p-4 mt-[210px]">
+      <main className="flex-grow p-4 mt-[10px]">
         <Routes>
           <Route path="/" element={<><Slider /><SlickSlider /><Home /></>} />
           <Route path="/pages/Ninos" element={<Ninos />} />

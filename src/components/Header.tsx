@@ -63,10 +63,10 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
     }, []);
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#fcd3e1] via-[#b5f8fe] to-[#d6ffdc] p-2 shadow-md">
+        <header className="top-0 left-0 w-full z-50 bg-gradient-to-r from-[#fcd3e1] via-[#b5f8fe] to-[#d6ffdc] p-2 shadow-md">
             <div className="container mx-auto flex flex-col items-center">
                 <Link to="/" className="flex flex-col items-center text-center mb-2">
-                    <img src="/logo.png" alt="Logo" className="h-10" />
+                    <img src="/iconos/logo.png" alt="Logo" className="h-10" />
                     <h1 className="text-3xl font-bold text-gray-800 font-nunito">Conociéndonos</h1>
                 </Link>
 
