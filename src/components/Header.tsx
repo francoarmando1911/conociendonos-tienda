@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import { VscAccount } from "react-icons/vsc";
-import discountedProducts from "../data/descuentos";
+import allProducts from "../data/allProducts";
 
 interface HeaderProps {
     cartItems: number;
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
         setIsMenuDropdownOpen(false); // Cierra el dropdown de menú
     };
 
-    const filteredProducts = discountedProducts.filter(product =>
+    const filteredProducts = allProducts.filter(product =>
         product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
             !menuDropdownRef.current.contains(event.target as Node) &&
             accountDropdownRef.current &&
             !accountDropdownRef.current.contains(event.target as Node) &&
-            searchDropdownRef.current && // Añadir la condición para el dropdown de búsqueda
+            searchDropdownRef.current && // Añade la condición para el dropdown de búsqueda
             !searchDropdownRef.current.contains(event.target as Node)
         ) {
             setIsMenuDropdownOpen(false);
@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
                 </div>
 
                 {/* Mostrar resultados de búsqueda */}
-                {isDropdownVisible && ( // Cambiar la condición para mostrar el dropdown de búsqueda
+                {isDropdownVisible && ( 
                     <div className="absolute top-16 w-full max-w-md mx-auto bg-white shadow-lg rounded-md p-2 overflow-y-auto" style={{ maxHeight: "200px" }}>
                         {filteredProducts.length > 0 ? (
                             filteredProducts.map((product, index) => (
