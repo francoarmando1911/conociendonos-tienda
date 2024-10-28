@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Ninos from './pages/Ninos';
 import Ninas from './pages/Ninas';
+import Bebes from './pages/bebes';
 import Login from './pages/login'; 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
           <Route path="/" element={<><Slider /><SlickSlider /><Home /></>} />
           <Route path="/ninos" element={<Ninos />} />
           <Route path="/ninas" element={<Ninas />} />
-          <Route path="/login" element={<Login />} /> {/* Asegúrate de que esto esté correcto */}
+          <Route path="/bebes" element={<Bebes />} />
+          <Route path="/login" element={<Login />} /> 
         </Routes>
       </main>
 

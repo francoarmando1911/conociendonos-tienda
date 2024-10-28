@@ -122,7 +122,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
                                         <Link to="/Ninas" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Niñas</Link>
                                     </li>
                                     <li>
-                                        <Link to="/Bebes" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Bebes</Link>
+                                        <Link to="/bebes" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Bebes</Link>
                                     </li>
                                 </ul>
                             </div>
