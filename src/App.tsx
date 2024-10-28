@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Ninos from './pages/Ninos';
 import Ninas from './pages/Ninas';
+import Login from './pages/login'; 
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
@@ -19,30 +20,14 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header
-        cartItems={cartItems}
-        addToCart={addToCart}
-      />
-
-      {/* Menú de categorías */}
-      {isMenuOpen && (
-        <nav className="bg-white shadow-lg p-4">
-          <ul>
-            <li>
-              <a href="/pages/Ninos" className="block py-2 text-gray-800 hover:text-blue-500">Niños</a>
-            </li>
-            <li>
-              <a href="/pages/Ninas" className="block py-2 text-gray-800 hover:text-blue-500">Niñas</a>
-            </li>
-          </ul>
-        </nav>
-      )}
+      <Header cartItems={cartItems} addToCart={addToCart} />
 
       <main className="flex-grow p-4 mt-[10px]">
         <Routes>
           <Route path="/" element={<><Slider /><SlickSlider /><Home /></>} />
-          <Route path="/pages/Ninos" element={<Ninos />} />
-          <Route path="/pages/Ninas" element={<Ninas />} />
+          <Route path="/ninos" element={<Ninos />} />
+          <Route path="/ninas" element={<Ninas />} />
+          <Route path="/login" element={<Login />} /> {/* Asegúrate de que esto esté correcto */}
         </Routes>
       </main>
 
@@ -52,3 +37,4 @@ function App() {
 }
 
 export default App;
+
