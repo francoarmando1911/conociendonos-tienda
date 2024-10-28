@@ -9,7 +9,8 @@ import { Routes, Route } from 'react-router-dom';
 import Ninos from './pages/Ninos';
 import Ninas from './pages/Ninas';
 import Bebes from './pages/bebes';
-import Login from './pages/login'; 
+import Login from './pages/login';
+import Register from './pages/register'; 
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/ninas" element={<Ninas />} />
           <Route path="/bebes" element={<Bebes />} />
           <Route path="/login" element={<Login />} /> 
+          <Route path="/register" element={<Register />} /> 
         </Routes>
       </main>
 

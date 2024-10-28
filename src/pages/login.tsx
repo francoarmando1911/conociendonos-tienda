@@ -11,7 +11,7 @@ const Login: React.FC = () => {
     };
 
     return(
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className=" flex items-center justify-center min-h-5">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h1 className="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h1>
                 <form onSubmit={handleSubmit} className='space-y-6'>
@@ -25,7 +25,7 @@ const Login: React.FC = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-noe focus:ring-2 focus:ring-blue-500'
+                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
                         />
                     </div>
 
