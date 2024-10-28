@@ -12,7 +12,7 @@ import Login from './pages/login';
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
-  const [isMenuOpen] = useState(false);
+  //const [isMenuOpen] = useState(false);
 
   const addToCart = () => {
     setCartItems(cartItems + 1);

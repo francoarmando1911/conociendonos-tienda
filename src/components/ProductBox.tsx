@@ -18,7 +18,7 @@ const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price
 
     return (
         <div
-            className="border rounded-xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer min-h-72" 
+            className="border rounded-xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer min-h-72 overflow-hidden" 
             onClick={onClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -37,6 +37,15 @@ const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
                 <p className="text-blue-500 font-bold mt-1">${price.toFixed(2)}</p>
             </div>
+
+            <div className="flex justify-center mb-4">
+                <button className="w-40 bg-[#f9c1d3] text-white py-2 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Agregar al carrito
+                </button>
+
+            </div>
+            
+
         </div>
     );
 };
