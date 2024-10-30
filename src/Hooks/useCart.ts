@@ -29,4 +29,26 @@ export const useCart = (type: string) => {
     const MAX_ITEMS = 10;
     const MIN_ITEMS = 1;
 
+    //Actualizar carrito en el storage cuando cambia
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+
+    //Agregar al carrito
+
+    function addToCart(item: Products) {
+        const itemExist = cart.findIndex((products) => products.id === item.id)
+
+        if(itemExist>=0){
+            if(cart[itemExist].quantity >= MAX_ITEMS) return;
+            const updatedCart = cart.map((product, index) =>
+                indes === itemExist ? {...product, quantity: product.quantity + 1} : product
+            );
+            setCart(updatedCart);
+        }else {
+            const newItem : CartItem = {...item, quantity: 1};
+            setCart([...CartPosition, newItem]);
+        }
+    }
+
 }

@@ -11,10 +11,12 @@ import Ninas from './pages/Ninas';
 import Bebes from './pages/bebes';
 import Login from './pages/login';
 import Register from './pages/register'; 
+//import { useCart } from './hooks/useCart';
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
   //const [isMenuOpen] = useState(false);
+  //const { Cart } = useCart(type);
 
   const addToCart = () => {
     setCartItems(cartItems + 1);
