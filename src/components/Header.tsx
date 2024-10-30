@@ -5,6 +5,7 @@ import { BsList } from "react-icons/bs";
 import { VscAccount } from "react-icons/vsc";
 import allProducts from "../data/allProducts";
 
+
 interface HeaderProps {
     cartItems: number;
     addToCart: () => void;
@@ -18,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
 
     const menuDropdownRef = useRef<HTMLDivElement>(null);
     const accountDropdownRef = useRef<HTMLDivElement>(null);
-    const searchDropdownRef = useRef<HTMLDivElement>(null); 
+    const searchDropdownRef = useRef<HTMLDivElement>(null);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -85,12 +86,12 @@ const Header: React.FC<HeaderProps> = ({ cartItems, addToCart }) => {
                 </div>
 
                 {/* Mostrar resultados de búsqueda */}
-                {isDropdownVisible && ( 
+                {isDropdownVisible && (
                     <div className="absolute top-16 w-full max-w-md mx-auto bg-white shadow-lg rounded-md p-2 overflow-y-auto" style={{ maxHeight: "200px" }}>
                         {filteredProducts.length > 0 ? (
-                            filteredProducts.map((product, index) => (
+                            filteredProducts.map((products, index) => (
                                 <div key={index} className="p-2 border-b last:border-none">
-                                    <p className="text-gray-800">{product.title}</p>
+                                    <p className="text-gray-800">{products.title}</p>
                                 </div>
                             ))
                         ) : (

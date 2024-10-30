@@ -1,4 +1,3 @@
-// /src/components/Home.tsx
 import React from 'react';
 import ProductBox from './ProductBox';
 import discountedProducts from '../data/descuentos';
@@ -24,9 +23,9 @@ const Home: React.FC = () => {
                     />
                 ))}
             </div>
-            
+
         </div>
-        
+
     );
 };
 

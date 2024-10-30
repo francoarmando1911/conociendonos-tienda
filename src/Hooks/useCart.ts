@@ -1,0 +1,32 @@
+import { useState, useEffect, useMemo } from "react";
+import bebes from "../data/bebes";
+import ninas from "../data/ninas";
+import ninos from "../data/ninos";
+import type { CartItem, Products, ProductID } from "../types/types";
+
+export const useCart = (type: string) => {
+    const initialCart = (): CartItem[] => {
+        const localStorageCart = localStorage.getItem('cart');
+        return localStorageCart ? JSON.parse(localStorageCart) : [];
+    }
+
+    //Determinar los productos segun el tipo seleccionado
+    const [data, setData] = useState<Products[]>([]);
+
+    useEffect(() => {
+        let selectedData: Products[] = [];
+        if(type === 'bebes'){
+            selectedData = bebes;
+        } else if (type === 'ninas'){
+            selectedData = ninas;
+        } else if(type === 'ninos'){
+            selectedData = ninos;
+        }
+
+        setData(selectedData);
+    }, [type]);
+
+    const MAX_ITEMS = 10;
+    const MIN_ITEMS = 1;
+
+}
