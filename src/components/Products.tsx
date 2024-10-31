@@ -1,4 +1,4 @@
-import type { Product } from "../types";
+import type { Product } from "../types/types";
 
 type ProductProps = {
     product: Product,
@@ -8,7 +8,7 @@ type ProductProps = {
 export type ProductID = Product['id']
 
 export default function Products({ product, addToCart }: ProductProps) {
-    const { id, name, image, description, price } = product;
+    const { id, image, title, price } = product;
 
     // Render a customized description for the product with id: 10  
     const renderDescription = () => {
@@ -16,13 +16,13 @@ export default function Products({ product, addToCart }: ProductProps) {
             return (
                 <p
                     dangerouslySetInnerHTML={{
-                        __html: description,
+                        __html: title,
                     }}
                     style={{ color: 'red' }} // Red color for the description of the product with id 10  
                 />
             );
         }
-        return <p>{description}</p>;
+        return <p>{title}</p>;
     };
 
     return (
@@ -40,7 +40,7 @@ export default function Products({ product, addToCart }: ProductProps) {
                         className="fs-4 fw-bold text-uppercase"
                         style={id === 19 ? { color: 'red' } : {}}
                     >
-                        {name}
+                        {title}
                     </h3>
                     {renderDescription()}
                     <p

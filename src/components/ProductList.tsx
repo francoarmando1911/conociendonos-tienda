@@ -1,22 +1,28 @@
-//CONFIG BASE DE DATOS
-
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '../services/apiService';
-import ProductBox from './ProductBox';
+import ProductBox from './ProductBox'; // Asegúrate de que has importado los componentes apropiados.  
+import { useCart } from '../hooks/useCart';
+import type { Product } from '../types/types';
 
-const ProductList = () => {
-    const [products, setProducts] = useState<any[]>([]); 
+type ProductsListProps = {
+    type: string;
+};
+
+const ProductsList: React.FC<ProductsListProps> = ({ type }) => {
+    const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null); 
+    const [error, setError] = useState<string | null>(null);
+
+    const { data, addToCart } = useCart(type);
 
     useEffect(() => {
         const loadProducts = async () => {
             setLoading(true);
             try {
-                const data = await fetchProducts();
-                setProducts(data);
+                const fetchedProducts = await fetchProducts();
+                setProducts(fetchedProducts);
             } catch (err) {
-                setError('Error al cargar productos'); 
+                setError('Error al cargar productos');
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -28,21 +34,17 @@ const ProductList = () => {
 
     if (loading) return <p>Cargando productos...</p>;
     if (error) return <p>{error}</p>;
+    if (products.length === 0) {
+        return <div>No hay productos disponibles para esta categoría.</div>;
+    }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products.map((product) => (
-                <ProductBox
-                    key={product.id}
-                    image={product.image}
-                    hoverImage={product.hoverImage}
-                    title={product.title}
-                    price={product.price}
-                    onClick={() => console.log(`Selected product: ${product.title}`)}
-                />
+        <div className="row">
+            {products.map((product: Product) => (
+                <ProductBox key={product.id} product={product} addToCart={addToCart} />
             ))}
         </div>
     );
 };
 
-export default ProductList; 
+export default ProductsList;

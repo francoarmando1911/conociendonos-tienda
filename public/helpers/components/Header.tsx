@@ -99,7 +99,7 @@ export default function Header({
                                 >
                                     {isEmpty ? (
                                         <p className="text-center">El carrito está vacío</p>
-                                    ) : (  
+                                    ) : (
                                         <>
                                             <table className="w-100 table">
                                                 <thead>

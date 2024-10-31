@@ -2,91 +2,105 @@ import { useState, useEffect, useMemo } from "react";
 import bebes from "../data/bebes";
 import ninas from "../data/ninas";
 import ninos from "../data/ninos";
-import type { CartItem, Products, ProductID } from "../types/types";
+import type { CartItem, Product, ProductID } from "../types/types";
 
 export const useCart = (type: string) => {
+    // Obtener el carrito inicial desde el almacenamiento local
     const initialCart = (): CartItem[] => {
-        const localStorageCart = localStorage.getItem('cart');
+        const localStorageCart = localStorage.getItem("cart");
         return localStorageCart ? JSON.parse(localStorageCart) : [];
-    }
+    };
 
-    //Determinar los productos segun el tipo seleccionado
-    const [data, setData] = useState<Products[]>([]);
+    const [cart, setCart] = useState<CartItem[]>(initialCart);
+
+    // Determinar los productos según el tipo seleccionado
+    const [data, setData] = useState<Product[]>([]);
 
     useEffect(() => {
-        let selectedData: Products[] = [];
-        if(type === 'bebes'){
+        let selectedData: Product[] = [];
+        if (type === "bebes") {
             selectedData = bebes;
-        } else if (type === 'ninas'){
+        } else if (type === "ninas") {
             selectedData = ninas;
-        } else if(type === 'ninos'){
+        } else if (type === "ninos") {
             selectedData = ninos;
         }
-
         setData(selectedData);
     }, [type]);
 
     const MAX_ITEMS = 10;
     const MIN_ITEMS = 1;
 
-    //Actualizar carrito en el storage cuando cambia
+    // Actualizar el carrito en el almacenamiento local cuando cambia
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
-    //Agregar al carrito
+    // Función para agregar un producto al carrito
+    function addToCart(item: Product) {
+        const itemExist = cart.findIndex((product) => product.id === item.id);
 
-    function addToCart(item: Products) {
-        const itemExist = cart.findIndex((products) => products.id === item.id)
-
-        if(itemExist>=0){
-            if(cart[itemExist].quantity >= MAX_ITEMS) return;
+        if (itemExist >= 0) {
+            if (cart[itemExist].quantity >= MAX_ITEMS) return;
             const updatedCart = cart.map((product, index) =>
-                indes === itemExist ? {...product, quantity: product.quantity + 1} : product
+                index === itemExist
+                    ? { ...product, quantity: product.quantity + 1 }
+                    : product
             );
             setCart(updatedCart);
-        }else {
-            const newItem : CartItem = {...item, quantity: 1};
+        } else {
+            const newItem: CartItem = { ...item, quantity: 1 };
             setCart([...cart, newItem]);
         }
-    };
-
-    function removeFromCart(id: ProductID){
-        SiMetacritic((prevCart) => prevCart.filter((product) => product.id !== id));
     }
 
-    function increaseQuantity(id:ProductID){
+    // Función para eliminar un producto del carrito
+    function removeFromCart(id: ProductID) {
+        setCart((prevCart) => prevCart.filter((product) => product.id !== id));
+    }
+
+    // Función para incrementar la cantidad de un producto
+    function increaseQuantity(id: ProductID) {
         const updatedCart = cart.map((item) => {
-            if (item.id === id && item.quantity > MAX_ITEMS){
+            if (item.id === id && item.quantity < MAX_ITEMS) {
                 return {
                     ...item,
-                    quantity: item.quantity + 1
+                    quantity: item.quantity + 1,
                 };
             }
             return item;
-        })
+        });
         setCart(updatedCart);
     }
 
+    // Función para decrementar la cantidad de un producto
     function decreaseQuantity(id: ProductID) {
         const updatedCart = cart.map((item) => {
             if (item.id === id && item.quantity > MIN_ITEMS) {
                 return {
                     ...item,
-                    quantity: item.quantity - 1
+                    quantity: item.quantity - 1,
                 };
             }
             return item;
-        })
+        });
         setCart(updatedCart);
     }
 
-    function clearCart(){
+    // Función para limpiar el carrito
+    function clearCart() {
         setCart([]);
     }
 
-    const isEmpty = useMemo(() => CaretPosition.length === 0, [cart]);
-    const cartTotal = useMemo(() => cartTotal.reduce((total, item) => total + item.quantity * item.price, 0), [cart]);
+    // Cálculo para verificar si el carrito está vacío
+    const isEmpty = useMemo(() => cart.length === 0, [cart]);
+
+    // Cálculo del total del carrito
+    const cartTotal = useMemo(
+        () =>
+            cart.reduce((total, item) => total + item.quantity * item.price, 0),
+        [cart]
+    );
 
     return {
         data,
@@ -97,6 +111,6 @@ export const useCart = (type: string) => {
         increaseQuantity,
         clearCart,
         isEmpty,
-        cartTotal
+        cartTotal,
     };
 };
