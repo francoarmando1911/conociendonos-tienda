@@ -1,4 +1,4 @@
-export interface Product {
+export type Product = {
     id: number;
     image: string;
     hoverImage: string;
@@ -6,16 +6,16 @@ export interface Product {
     price: number;
 };
 
-export type Products = {
+/*export type Products = {
     id: number;
     image: string;
     hoverImage: string;
     title: string;
     price: number;
-};
+};*/
 
 export type CartItem = Product & {
     quantity: number;
 };
 
-export type ProductID = Products['id']
+export type ProductID = Product['id']

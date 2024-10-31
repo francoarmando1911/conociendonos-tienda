@@ -47,8 +47,56 @@ export const useCart = (type: string) => {
             setCart(updatedCart);
         }else {
             const newItem : CartItem = {...item, quantity: 1};
-            setCart([...CartPosition, newItem]);
+            setCart([...cart, newItem]);
         }
+    };
+
+    function removeFromCart(id: ProductID){
+        SiMetacritic((prevCart) => prevCart.filter((product) => product.id !== id));
     }
 
-}
+    function increaseQuantity(id:ProductID){
+        const updatedCart = cart.map((item) => {
+            if (item.id === id && item.quantity > MAX_ITEMS){
+                return {
+                    ...item,
+                    quantity: item.quantity + 1
+                };
+            }
+            return item;
+        })
+        setCart(updatedCart);
+    }
+
+    function decreaseQuantity(id: ProductID) {
+        const updatedCart = cart.map((item) => {
+            if (item.id === id && item.quantity > MIN_ITEMS) {
+                return {
+                    ...item,
+                    quantity: item.quantity - 1
+                };
+            }
+            return item;
+        })
+        setCart(updatedCart);
+    }
+
+    function clearCart(){
+        setCart([]);
+    }
+
+    const isEmpty = useMemo(() => CaretPosition.length === 0, [cart]);
+    const cartTotal = useMemo(() => cartTotal.reduce((total, item) => total + item.quantity * item.price, 0), [cart]);
+
+    return {
+        data,
+        cart,
+        addToCart,
+        removeFromCart,
+        decreaseQuantity,
+        increaseQuantity,
+        clearCart,
+        isEmpty,
+        cartTotal
+    };
+};
