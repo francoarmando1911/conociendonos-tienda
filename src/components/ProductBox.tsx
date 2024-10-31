@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import type { Product } from "../types/types"; 
+import allProducts from "../data/allProducts";
 
 interface ProductBoxProps {
     image: string;
