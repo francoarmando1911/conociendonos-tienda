@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../hooks/useCart";
-import type { Product } from "../types/types"; 
+import type { Product } from "../types/types";
 import allProducts from "../data/allProducts";
 
 interface ProductBoxProps {
@@ -8,12 +8,12 @@ interface ProductBoxProps {
     hoverImage: string;
     title: string;
     price: number;
-    product: Product; 
+    product: Product;
 }
 
 const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price, product }) => {
     const [currentImage, setCurrentImage] = useState(image);
-    const { addToCart } = useCart("bebes ninos ninas"); 
+    const { addToCart } = useCart({allProducts});
 
     const handleMouseEnter = () => setCurrentImage(hoverImage);
     const handleMouseLeave = () => setCurrentImage(image);
@@ -23,7 +23,7 @@ const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price
     const handleAddToCart = () => {
         if (product) {
             addToCart(product);
-            console.log(`Producto agregado: ${title}`); 
+            console.log(`Producto agregado: ${title}`);
         } else {
             console.error(`Error al agregar al carrito: El producto '${title}' no está definido`);
         }
@@ -32,9 +32,9 @@ const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price
     return (
         <div
             className="border rounded-xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer min-h-72 overflow-hidden"
-            role="button" 
-            tabIndex={0} 
-            onKeyDown={(e) => e.key === "Enter" && handleAddToCart()} 
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && handleAddToCart()}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleTouchStart}
@@ -53,7 +53,7 @@ const ProductBox: React.FC<ProductBoxProps> = ({ image, hoverImage, title, price
             <div className="flex justify-center mb-4">
                 <button
                     className="w-40 bg-[#f9c1d3] text-white py-2 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    onClick={handleAddToCart} 
+                    onClick={handleAddToCart}
                 >
                     Agregar al carrito
                 </button>
