@@ -28,6 +28,7 @@ function Header({
     showCart,
     className,
 }: HeaderProps) {
+
     const [isCartVisible, setIsCartVisible] = useState(false);
     const isEmpty = useMemo(() => cart.length === 0, [cart]);
     const cartTotal = useMemo(
@@ -46,6 +47,7 @@ function Header({
     const menuDropdownRef = useRef<HTMLDivElement>(null);
     const accountDropdownRef = useRef<HTMLDivElement>(null);
     const searchDropdownRef = useRef<HTMLDivElement>(null);
+    const cartDropdownRef = useRef<HTMLDivElement>(null);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -55,17 +57,13 @@ function Header({
 
     const toggleMenuDropdown = () => {
         setIsMenuDropdownOpen((prev) => !prev);
-        setIsAccountDropdownOpen(false); // Cierra el dropdown de cuenta
+        setIsAccountDropdownOpen(false);
     };
 
     const toggleAccountDropdown = () => {
         setIsAccountDropdownOpen((prev) => !prev);
-        setIsMenuDropdownOpen(false); // Cierra el dropdown de menú
+        setIsMenuDropdownOpen(false);
     };
-
-    const filteredProducts = allProducts.filter((product) =>
-        product.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
 
     const handleClickOutside = (event: MouseEvent) => {
         if (
@@ -73,14 +71,22 @@ function Header({
             !menuDropdownRef.current.contains(event.target as Node) &&
             accountDropdownRef.current &&
             !accountDropdownRef.current.contains(event.target as Node) &&
-            searchDropdownRef.current && // Añade la condición para el dropdown de búsqueda
-            !searchDropdownRef.current.contains(event.target as Node)
+            searchDropdownRef.current &&
+            !searchDropdownRef.current.contains(event.target as Node) &&
+            cartDropdownRef.current &&
+            !cartDropdownRef.current.contains(event.target as Node)
         ) {
             setIsMenuDropdownOpen(false);
             setIsAccountDropdownOpen(false);
-            setIsDropdownVisible(false); // Cerrar dropdown de búsqueda
+            setIsDropdownVisible(false);
+            setIsCartVisible(false);
         }
     };
+
+    const filteredProducts = allProducts.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
