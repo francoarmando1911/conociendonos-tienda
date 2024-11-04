@@ -1,4 +1,4 @@
-import { Product } from '../types/types'; // Asegúrate de ajustar la ruta según tu estructura
+import { Product } from '../types/types'; 
 
 const discountedProducts: Product[] = [
     {

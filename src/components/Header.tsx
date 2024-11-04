@@ -25,8 +25,8 @@ function Header({
     increaseQuantity,
     removeFromCart,
     clearCart,
-    showCart,
-    className,
+    //showCart,
+    //className,
 }: HeaderProps) {
 
     const [isCartVisible, setIsCartVisible] = useState(false);
@@ -230,7 +230,7 @@ function Header({
                             <FaShoppingCart className="text-2xl mx-2" />
                         </button>
                         {isCartVisible && (
-                            <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-md p-3 z-60">
+                            <div className="absolute left-2 mt-2 w-72 bg-white shadow-lg rounded-md p-3 z-60">
                                 {isEmpty ? (
                                     <p className="text-center">El carrito está vacío</p>
                                 ) : (

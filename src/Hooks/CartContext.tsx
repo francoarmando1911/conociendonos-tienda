@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-
-// Definición de las acciones del carrito  
+ 
 type Action =
     | { type: 'ADD_TO_CART'; product: Product }
     | { type: 'REMOVE_FROM_CART'; id: number }
@@ -8,12 +7,10 @@ type Action =
     | { type: 'DECREASE_QUANTITY'; id: number }
     | { type: 'CLEAR_CART' };
 
-// Estado del carrito  
 interface CartState {
     cart: Array<Product>;
 }
 
-// Definición del tipo de producto  
 interface Product {
     id: number;
     name: string;
@@ -26,17 +23,14 @@ const initialState: CartState = {
     cart: [],
 };
 
-// Crear el contexto  
 const CartContext = createContext<{
     state: CartState;
     dispatch: React.Dispatch<Action>;
 }>({ state: initialState, dispatch: () => null });
 
-// Reducer del carrito  
 const cartReducer = (state: CartState, action: Action): CartState => {
     switch (action.type) {
         case 'ADD_TO_CART':
-            // Comprobar si ya existe el producto en el carrito  
             const existingProduct = state.cart.find(product => product.id === action.product.id);
             if (existingProduct) {
                 return {
@@ -79,7 +73,6 @@ const cartReducer = (state: CartState, action: Action): CartState => {
     }
 };
 
-// Proveedor del contexto  
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
 
@@ -90,7 +83,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     );
 };
 
-// Hook para usar el contexto  
 export const useCart = () => {
     return useContext(CartContext);
 };

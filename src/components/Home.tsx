@@ -4,7 +4,7 @@ import discountedProducts from '../data/descuentos';
 
 const Home: React.FC = () => {
     const handleProductClick = (productId: number) => {
-        // Redirigir a la página de compra del producto
+        
         window.location.href = `/comprar/${productId}`;
     };
 

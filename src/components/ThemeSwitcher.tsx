@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 const ThemeSwitcher: React.FC = () => {
     const [darkMode, setDarkMode] = useState<boolean>(false);
 
-    // Cambia el tema cuando darkMode cambia
     useEffect(() => {
         if (darkMode) {
             document.documentElement.classList.add('dark');
@@ -12,7 +11,6 @@ const ThemeSwitcher: React.FC = () => {
         }
     }, [darkMode]);
 
-    // Alterna entre el modo oscuro y claro
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
     };

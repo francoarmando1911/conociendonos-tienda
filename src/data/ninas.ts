@@ -1,4 +1,4 @@
-import { Product } from '../types/types'; // Importa la interfaz
+import { Product } from '../types/types'; 
 
 const ninas: Product[] = [
     {

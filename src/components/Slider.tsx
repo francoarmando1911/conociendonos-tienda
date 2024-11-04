@@ -33,7 +33,7 @@ const Slider: React.FC = () => {
     }, [isHovered, nextSlide]);
 
     return (
-        <div className="relative w-full slider-height z-10 "> {/* Asegúrate de que el slider tenga z-index bajo */}
+        <div className="relative w-full slider-height z-10 "> 
             <div
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -52,7 +52,6 @@ const Slider: React.FC = () => {
                 ))}
             </div>
 
-            {/* Botón de anterior */}
             <button
                 onClick={prevSlide}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 text-black p-2 rounded-full hover:bg-opacity-100 transition z-20" // Añadido z-index aquí
@@ -60,7 +59,6 @@ const Slider: React.FC = () => {
                 <FaChevronLeft />
             </button>
 
-            {/* Botón de siguiente */}
             <button
                 onClick={nextSlide}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-75 text-black p-2 rounded-full hover:bg-opacity-100 transition z-20" // Añadido z-index aquí

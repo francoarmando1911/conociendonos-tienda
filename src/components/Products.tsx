@@ -10,7 +10,6 @@ export type ProductID = Product['id']
 export default function Products({ product, addToCart }: ProductProps) {
     const { id, image, title, price } = product;
 
-    // Render a customized description for the product with id: 10  
     const renderDescription = () => {
         if (id === 10) {
             return (
@@ -18,7 +17,7 @@ export default function Products({ product, addToCart }: ProductProps) {
                     dangerouslySetInnerHTML={{
                         __html: title,
                     }}
-                    style={{ color: 'red' }} // Red color for the description of the product with id 10  
+                    style={{ color: 'red' }} 
                 />
             );
         }
@@ -28,7 +27,6 @@ export default function Products({ product, addToCart }: ProductProps) {
     return (
         <div className="col-md-6 col-lg-4 my-4 d-flex justify-content-center">
             <div className="row align-items-center">
-                {/* Condition to show or hide the image */}
                 {id !== 19 && (
                     <div className="col-4">
                         <img className="img-fluid" src={`/${image}.png`} alt="Product image" />
@@ -50,7 +48,6 @@ export default function Products({ product, addToCart }: ProductProps) {
                         ${price}
                     </p>
 
-                    {/* Condition to show or hide the button */}
                     {id !== 19 && (
                         <button
                             type="button"
