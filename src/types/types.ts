@@ -6,9 +6,12 @@ export type Product = {
     price: number;
 };
 
-export type CartItem = Product & {
+export interface CartItem extends Product {
+    id: number;
+    title: string;
+    price: number;
     quantity: number;
-};
+}
 
 export type ProductID = Product['id']
 
