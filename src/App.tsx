@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Slider from './components/Slider';
 import SlickSlider from './components/SlickSlider';
-import ProductList from './components/ProductList';
 import Footer from './components/Footer';
 import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -49,6 +48,7 @@ const App: React.FC<AppProps> = () => {
         showCart={true}
       />
 
+     
       <main className="flex-grow p-4 mt-[10px]">
         <Routes>
           <Route path="/" element={<><Slider /><SlickSlider /><Home /></>} />
